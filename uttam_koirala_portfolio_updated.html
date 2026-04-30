@@ -1,0 +1,360 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body,html{background:transparent;font-family:var(--font-sans);color:var(--color-text-primary)}
+a{text-decoration:none;color:inherit}
+.port{background:#0a0a0f;color:#e2e8f0;min-height:100vh;font-family:'Inter',var(--font-sans)}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(10,10,15,0.9);border-bottom:1px solid #1e1e35;position:sticky;top:0;z-index:50}
+.nlogo{font-family:var(--font-mono);font-size:1rem;font-weight:500;color:#a78bfa}
+.nlogo span{color:#38bdf8}
+.nlinks{display:flex;gap:1.5rem;list-style:none}
+.nlinks a{color:#94a3b8;font-size:0.78rem;text-transform:uppercase;letter-spacing:.06em;transition:color .2s}
+.nlinks a:hover{color:#e2e8f0}
+.nhire{padding:.4rem 1rem;border:1px solid #6c63ff;color:#a78bfa;border-radius:6px;font-size:0.75rem;font-weight:600;background:transparent;cursor:pointer;transition:all .2s}
+.nhire:hover{background:#6c63ff;color:#fff}
+
+/* HERO */
+.hero{padding:5rem 2rem 3rem;position:relative;overflow:hidden}
+.hero-glow{position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(108,99,255,.1) 0%,transparent 70%);pointer-events:none}
+.hero-glow2{position:absolute;bottom:0;right:0;width:300px;height:300px;background:radial-gradient(ellipse,rgba(56,189,248,.06) 0%,transparent 70%);pointer-events:none}
+.htag{display:inline-flex;align-items:center;gap:.4rem;background:rgba(108,99,255,.1);border:1px solid rgba(108,99,255,.3);padding:.3rem .8rem;border-radius:50px;font-size:.72rem;color:#a78bfa;font-family:var(--font-mono);margin-bottom:1.25rem}
+.hdot{width:6px;height:6px;background:#34d399;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hname{font-size:clamp(2.2rem,6vw,4rem);font-weight:900;line-height:1.05;letter-spacing:-.03em;margin-bottom:.4rem}
+.hname .l1{color:#e2e8f0}
+.hname .l2{background:linear-gradient(135deg,#6c63ff,#38bdf8,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hrole{font-family:var(--font-mono);font-size:.88rem;color:#38bdf8;margin-bottom:1.25rem}
+.hrole .br{color:#64748b}
+.hdesc{font-size:.92rem;color:#94a3b8;max-width:520px;line-height:1.8;margin-bottom:2rem}
+.hbtns{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.btn-p{padding:.65rem 1.5rem;background:linear-gradient(135deg,#6c63ff,#8b5cf6);color:#fff;border:none;border-radius:8px;font-size:.85rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;box-shadow:0 0 25px rgba(108,99,255,.3);transition:all .3s}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(108,99,255,.5)}
+.btn-o{padding:.65rem 1.5rem;background:transparent;border:1px solid #1e1e35;color:#e2e8f0;border-radius:8px;font-size:.85rem;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;transition:all .2s}
+.btn-o:hover{border-color:#6c63ff;color:#a78bfa}
+.hstats{display:flex;gap:2.5rem;flex-wrap:wrap}
+.snum{font-size:1.8rem;font-weight:800;background:linear-gradient(135deg,#a78bfa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.slbl{font-size:.72rem;color:#64748b;text-transform:uppercase;letter-spacing:.08em}
+
+/* SECTIONS */
+.sec{padding:3.5rem 2rem}
+.sec-alt{background:#0f0f1a}
+.sec-ey{font-family:var(--font-mono);font-size:.72rem;color:#6c63ff;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.6rem}
+.sec-t{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;letter-spacing:-.02em;color:#e2e8f0}
+.sec-t span{color:#a78bfa}
+.sec-sub{color:#94a3b8;font-size:.88rem;margin-top:.6rem;max-width:480px}
+
+/* SKILLS */
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:2rem}
+.sc{background:#161625;border:1px solid #1e1e35;border-radius:14px;padding:1.25rem;transition:all .3s}
+.sc:hover{border-color:#6c63ff;transform:translateY(-3px)}
+.sc-h{display:flex;align-items:center;gap:.7rem;margin-bottom:1rem}
+.si{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.95rem}
+.fe .si{background:rgba(108,99,255,.15)}
+.be .si{background:rgba(56,189,248,.15)}
+.to .si{background:rgba(52,211,153,.15)}
+.sc-name{font-weight:700;font-size:.88rem;color:#e2e8f0}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.tag{padding:.22rem .65rem;border-radius:50px;font-size:.7rem;font-weight:600}
+.tp{background:rgba(108,99,255,.15);color:#a78bfa;border:1px solid rgba(108,99,255,.2)}
+.tb{background:rgba(56,189,248,.12);color:#38bdf8;border:1px solid rgba(56,189,248,.2)}
+.tg{background:rgba(52,211,153,.12);color:#34d399;border:1px solid rgba(52,211,153,.2)}
+.tk{background:rgba(244,114,182,.12);color:#f472b6;border:1px solid rgba(244,114,182,.2)}
+.to2{background:rgba(251,146,60,.12);color:#fb923c;border:1px solid rgba(251,146,60,.2)}
+.tgr{background:rgba(100,116,139,.12);color:#64748b;border:1px solid rgba(100,116,139,.2)}
+
+/* PROJECTS */
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem;margin-top:2rem}
+.pc{background:#161625;border:1px solid #1e1e35;border-radius:18px;padding:1.5rem;transition:all .35s;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.pc::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:0;transition:opacity .3s}
+.pc.p1::after{background:linear-gradient(90deg,#6c63ff,#a78bfa)}
+.pc.p2::after{background:linear-gradient(90deg,#38bdf8,#34d399)}
+.pc.p3::after{background:linear-gradient(90deg,#f472b6,#fb923c)}
+.pc.pf::after{background:linear-gradient(90deg,#6c63ff,#38bdf8,#f472b6)}
+.pc:hover{border-color:transparent;transform:translateY(-5px);box-shadow:0 18px 50px rgba(0,0,0,.5)}
+.pc:hover::after{opacity:1}
+.pfb{display:inline-flex;align-items:center;gap:.35rem;background:linear-gradient(135deg,rgba(108,99,255,.2),rgba(56,189,248,.15));border:1px solid rgba(108,99,255,.3);padding:.22rem .65rem;border-radius:50px;font-size:.67rem;font-weight:600;color:#a78bfa;margin-bottom:.8rem;width:fit-content}
+.pt{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.75rem}
+.pem{font-size:1.6rem}
+.pl{display:flex;gap:.4rem}
+.pla{width:28px;height:28px;border-radius:7px;background:#13131f;border:1px solid #1e1e35;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:.75rem;transition:all .2s;cursor:pointer}
+.pla:hover{background:#6c63ff;color:#fff;border-color:#6c63ff}
+.ptitle{font-size:1rem;font-weight:700;margin-bottom:.4rem;color:#e2e8f0}
+.pdesc{font-size:.82rem;color:#94a3b8;line-height:1.7;margin-bottom:1rem;flex:1}
+.pstack{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:1rem}
+.stk{padding:.18rem .55rem;background:#13131f;border:1px solid #1e1e35;border-radius:4px;font-family:var(--font-mono);font-size:.65rem;color:#64748b}
+.phi{border-top:1px solid #1e1e35;padding-top:.75rem;margin-top:auto}
+.phi-i{display:flex;align-items:flex-start;gap:.4rem;font-size:.75rem;color:#94a3b8;margin-bottom:.35rem}
+.phi-i::before{content:'→';color:#6c63ff;flex-shrink:0}
+
+/* EXPERIENCE */
+.etl{position:relative;max-width:720px;margin-top:2rem}
+.etl::before{content:'';position:absolute;left:14px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,#6c63ff,transparent)}
+.ei{position:relative;padding-left:3rem;margin-bottom:2rem}
+.edot{position:absolute;left:6px;top:6px;width:16px;height:16px;border-radius:50%;background:#0a0a0f;border:2px solid #6c63ff;display:flex;align-items:center;justify-content:center}
+.edot::after{content:'';width:5px;height:5px;background:#6c63ff;border-radius:50%}
+.ec{background:#161625;border:1px solid #1e1e35;border-radius:12px;padding:1.25rem;transition:all .3s}
+.ec:hover{border-color:#6c63ff}
+.eh{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.4rem;margin-bottom:.35rem}
+.er{font-weight:700;font-size:.92rem;color:#e2e8f0}
+.ep{font-family:var(--font-mono);font-size:.7rem;color:#38bdf8;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);padding:.18rem .55rem;border-radius:4px}
+.eco{font-size:.8rem;color:#a78bfa;margin-bottom:.6rem;font-weight:500}
+.epoints{list-style:none}
+.epoints li{font-size:.8rem;color:#94a3b8;padding-left:1.1rem;position:relative;margin-bottom:.3rem;line-height:1.6}
+.epoints li::before{content:'▸';position:absolute;left:0;color:#6c63ff}
+
+/* EDUCATION */
+.educ{background:#161625;border:1px solid #1e1e35;border-radius:14px;padding:1.5rem;max-width:560px;display:flex;gap:1.2rem;align-items:flex-start;margin-top:2rem;transition:all .3s}
+.educ:hover{border-color:#6c63ff}
+.eicon{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,rgba(108,99,255,.2),rgba(56,189,248,.15));border:1px solid rgba(108,99,255,.25);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.edeg{font-size:.9rem;font-weight:700;margin-bottom:.25rem;color:#e2e8f0}
+.esch{font-size:.8rem;color:#a78bfa;margin-bottom:.2rem}
+.eper{font-family:var(--font-mono);font-size:.7rem;color:#64748b}
+.certs{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+.cert{display:flex;align-items:center;gap:.5rem;background:#161625;border:1px solid #1e1e35;padding:.5rem .9rem;border-radius:9px;font-size:.75rem;color:#94a3b8;transition:all .2s}
+.cert:hover{border-color:#a78bfa;color:#e2e8f0}
+
+/* ABOUT */
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:2rem}
+.at p{color:#94a3b8;font-size:.88rem;line-height:1.85;margin-bottom:.85rem}
+.ainfo{margin-top:1.5rem;display:flex;flex-direction:column;gap:.6rem}
+.air{display:flex;gap:.6rem}
+.al{font-family:var(--font-mono);font-size:.7rem;color:#6c63ff;width:80px;flex-shrink:0;padding-top:.1rem}
+.av{font-size:.82rem;color:#94a3b8}
+.term{background:#161625;border:1px solid #1e1e35;border-radius:16px;padding:1.25rem;font-family:var(--font-mono);font-size:.75rem}
+.tbar{display:flex;gap:.35rem;margin-bottom:1rem;align-items:center}
+.tdot{width:9px;height:9px;border-radius:50%}
+.ttitle{color:#64748b;font-size:.65rem;margin-left:auto}
+.tl{margin-bottom:.3rem;line-height:1.6}
+.tp2{color:#6c63ff}.tcmd{color:#e2e8f0}.tout{color:#94a3b8;padding-left:.75rem}
+.tblue{color:#38bdf8}.tpur{color:#a78bfa}.tgrn{color:#34d399}.tpnk{color:#f472b6}
+
+/* CONTACT */
+.contact{text-align:center;padding:5rem 2rem}
+.ctag{display:inline-flex;align-items:center;gap:.4rem;background:rgba(108,99,255,.1);border:1px solid rgba(108,99,255,.3);padding:.3rem .8rem;border-radius:50px;font-size:.72rem;color:#a78bfa;font-family:var(--font-mono);margin-bottom:1.25rem}
+.ctitle{font-size:clamp(1.8rem,4vw,3rem);font-weight:900;letter-spacing:-.02em;margin-bottom:.75rem;color:#e2e8f0}
+.ctitle span{background:linear-gradient(135deg,#6c63ff,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.csub{color:#94a3b8;font-size:.9rem;margin-bottom:2rem;line-height:1.7}
+.clinks{display:flex;justify-content:center;gap:.75rem;flex-wrap:wrap}
+.cl{display:flex;align-items:center;gap:.5rem;padding:.65rem 1.2rem;background:#161625;border:1px solid #1e1e35;border-radius:9px;color:#94a3b8;font-size:.82rem;font-weight:500;transition:all .25s;cursor:pointer}
+.cl:hover{border-color:#6c63ff;color:#a78bfa;transform:translateY(-2px)}
+footer{background:#0f0f1a;border-top:1px solid #1e1e35;padding:1.5rem 2rem;text-align:center;font-size:.7rem;color:#64748b;font-family:var(--font-mono)}
+footer span{color:#a78bfa}
+@media(max-width:640px){.ag{grid-template-columns:1fr}.nlinks{display:none}.pg{grid-template-columns:1fr}.hstats{gap:1.5rem}}
+</style>
+
+<div class="port">
+<nav>
+  <div class="nlogo"><span>&lt;</span>UK<span>/&gt;</span></div>
+  <ul class="nlinks">
+    <li><a href="#sk">Skills</a></li>
+    <li><a href="#pr">Projects</a></li>
+    <li><a href="#ex">Experience</a></li>
+    <li><a href="#ed">Education</a></li>
+    <li><a href="#ab">About</a></li>
+  </ul>
+  <a href="mailto:uttamkoirala2060@gmail.com" class="nhire">Hire Me</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div style="position:relative;z-index:1">
+    <div class="htag"><span class="hdot"></span> Available for work</div>
+    <h1 class="hname">
+      <div class="l1">Uttam Koirala</div>
+      <div class="l2">Full Stack Developer</div>
+    </h1>
+    <p class="hrole"><span class="br">// </span>Frontend (React · Vue) &nbsp;+&nbsp; Backend (Django · Python) &nbsp;+&nbsp; DevOps (Docker · AWS)</p>
+    <p class="hdesc">Building high-performance, scalable web applications — from pixel-perfect UIs to robust Django REST APIs and real-time WebSocket systems. I turn ideas into production-ready products.</p>
+    <div class="hbtns">
+      <a href="#pr" class="btn-p">View Projects →</a>
+      <a href="https://www.linkedin.com/in/uttam-koirala" target="_blank" class="btn-o"> LinkedIn</a>
+      <a href="https://github.com/uttamKo" target="_blank" class="btn-o"> GitHub</a>
+    </div>
+    <div class="hstats">
+      <div><div class="snum">4+</div><div class="slbl">Projects Shipped</div></div>
+      <div><div class="snum">2+</div><div class="slbl">Years Experience</div></div>
+      <div><div class="snum">Full</div><div class="slbl">Stack Capable</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="sec sec-alt" id="sk">
+  <div><p class="sec-ey">// tech stack</p><h2 class="sec-t">What I <span>Work With</span></h2><p class="sec-sub">Full-stack from pixel-perfect frontends to scalable Django backends and containerized deployments.</p></div>
+  <div class="sg">
+    <div class="sc fe"><div class="sc-h"><div class="si">🎨</div><div class="sc-name">Frontend</div></div>
+      <div class="tags"><span class="tag tp">HTML5</span><span class="tag tp">CSS3</span><span class="tag tp">JavaScript ES6+</span><span class="tag tp">React</span><span class="tag tp">Vue.js</span><span class="tag tk">Responsive Design</span><span class="tag tk">Figma → Code</span><span class="tag tk">Shopify Liquid</span></div></div>
+    <div class="sc be"><div class="sc-h"><div class="si">⚙️</div><div class="sc-name">Backend</div></div>
+      <div class="tags"><span class="tag tb">Python</span><span class="tag tb">Django</span><span class="tag tb">Django REST Framework</span><span class="tag tb">Django Channels</span><span class="tag tb">WebSockets</span><span class="tag tg">PostgreSQL</span><span class="tag tg">JWT Auth</span></div></div>
+    <div class="sc to"><div class="sc-h"><div class="si">🛠️</div><div class="sc-name">DevOps &amp; Tools</div></div>
+      <div class="tags"><span class="tag tg">Docker</span><span class="tag tg">GitHub Actions CI/CD</span><span class="tag tg">AWS EC2</span><span class="tag to2">Git / GitHub</span><span class="tag to2">Node.js</span><span class="tag tgr">WebRTC</span><span class="tag tgr">Vercel</span></div></div>
+  </div>
+</div>
+
+<div class="sec" id="pr">
+  <div><p class="sec-ey">// personal projects</p><h2 class="sec-t">Things I've <span>Built</span></h2><p class="sec-sub">End-to-end full-stack apps — from AI agricultural tools to real-time communication platforms.</p></div>
+  <div class="pg">
+    <div class="pc pf" style="grid-column:1/-1">
+      <div class="pfb">⭐ Featured Project</div>
+      <div class="pt"><div class="pem">💬</div><div class="pl"><span class="pla">↗</span></div></div>
+      <div class="ptitle">ConnectHub — Real-Time Chat &amp; Communication Platform</div>
+      <div class="pdesc">A full-stack real-time communication platform with multi-user chat, audio/video calling, and AI-powered voice-to-text with smart correction. Users can chat globally or in private rooms, with WebRTC peer-to-peer calls built in. Vue.js frontend + Django Channels backend, containerized with Docker.</div>
+      <div class="pstack"><span class="stk">Vue.js</span><span class="stk">HTML/CSS</span><span class="stk">JavaScript</span><span class="stk">Django</span><span class="stk">Django Channels</span><span class="stk">WebSockets</span><span class="stk">WebRTC</span><span class="stk">Python</span><span class="stk">PostgreSQL</span><span class="stk">Docker</span><span class="stk">AI/NLP</span></div>
+      <div class="phi">
+        <div class="phi-i">Real-time group &amp; private messaging via Django Channels WebSockets with live presence indicators</div>
+        <div class="phi-i">Audio &amp; video calling powered by WebRTC — peer-to-peer, low-latency, browser-native</div>
+        <div class="phi-i">Voice-to-text transcription with AI-powered grammar and context correction</div>
+        <div class="phi-i">Global and room-based chat with auth, roles, and full message history</div>
+        <div class="phi-i">Containerized with Docker Compose — scalable architecture ready for production</div>
+      </div>
+    </div>
+    <div class="pc p1">
+      <div class="pt"><div class="pem">🌾</div><div class="pl"><a href="https://krishi-guru.vercel.app" target="_blank" class="pla">↗</a></div></div>
+      <div class="ptitle">Krishi Guru — AI Agricultural Mentor</div>
+      <div class="pdesc">AI-powered mentorship platform for Nepali farmers. Provides intelligent crop guidance and disease identification in rural Nepali dialects for maximum accessibility.</div>
+      <div class="pstack"><span class="stk">HTML</span><span class="stk">CSS</span><span class="stk">JavaScript</span><span class="stk">AI Integration</span><span class="stk">Multi-language</span><span class="stk">Vercel</span></div>
+      <div class="phi">
+        <div class="phi-i">Multi-language support including rural Nepali dialects</div>
+        <div class="phi-i">AI-driven crop disease prevention &amp; farming guidance</div>
+        <div class="phi-i">Fully responsive — optimized for mobile in rural areas</div>
+      </div>
+    </div>
+    <div class="pc p2">
+      <div class="pt"><div class="pem">📊</div><div class="pl"><span class="pla">↗</span></div></div>
+      <div class="ptitle">AgroInsight — Smart Crop Monitoring</div>
+      <div class="pdesc">Full-stack crop monitoring platform with real-time insights, AI-driven health analysis, and a visualized dashboard for actionable farmer recommendations.</div>
+      <div class="pstack"><span class="stk">HTML</span><span class="stk">CSS</span><span class="stk">JavaScript</span><span class="stk">Node.js</span><span class="stk">AI Analysis</span><span class="stk">Multi-language</span></div>
+      <div class="phi">
+        <div class="phi-i">AI-driven early detection of crop diseases &amp; nutrient issues</div>
+        <div class="phi-i">Dashboard with crop status, weather alerts, smart recommendations</div>
+        <div class="phi-i">Multi-language support for rural Nepali farming communities</div>
+      </div>
+    </div>
+    <div class="pc p3">
+      <div class="pt"><div class="pem">⚖️</div><div class="pl"><a href="https://www.kanooniparamarsha.com/" target="_blank" class="pla">↗</a></div></div>
+      <div class="ptitle">Kanooni Paramarsha — Legal Platform</div>
+      <div class="pdesc">Online legal consultation platform for Nepal. Designed the full responsive UI and integrated with legal database and auth backend via APIs.</div>
+      <div class="pstack"><span class="stk">HTML</span><span class="stk">CSS</span><span class="stk">JavaScript</span><span class="stk">Figma</span><span class="stk">API Integration</span><span class="stk">Responsive</span></div>
+      <div class="phi">
+        <div class="phi-i">Converted Figma designs to clean HTML/CSS components</div>
+        <div class="phi-i">Integrated with legal database &amp; authentication backend</div>
+        <div class="phi-i">Optimized navigation &amp; accessibility for public-facing service</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec sec-alt" id="ex">
+  <div><p class="sec-ey">// work history</p><h2 class="sec-t">Professional <span>Experience</span></h2></div>
+  <div class="etl">
+    <div class="ei"><div class="edot"></div>
+      <div class="ec">
+        <div class="eh"><span class="er">Freelance Shopify Developer &amp; E-Commerce Specialist</span><span class="ep">Oct 2025 – Feb 2026</span></div>
+        <div class="eco">Freelance · Remote 🌐</div>
+        <ul class="epoints">
+          <li>Built and customized Shopify dropshipping stores focused on niche product websites</li>
+          <li>Designed high-conversion product pages with clean UI, strong CTAs, and optimized layouts</li>
+          <li>Customized Shopify themes using HTML, CSS, and Liquid templating</li>
+          <li>Implemented fully responsive designs across all breakpoints</li>
+          <li>Collaborated with clients and marketing teams to align UI with sales strategy</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ei"><div class="edot"></div>
+      <div class="ec">
+        <div class="eh"><span class="er">Frontend Development Intern</span><span class="ep">Apr 2025 – Jul 2025</span></div>
+        <div class="eco">Edit Enterprises · Kathmandu 🇳🇵 — Kanooni Paramarsha</div>
+        <ul class="epoints">
+          <li>Developed responsive UI for Nepal's online legal consultation platform</li>
+          <li>Converted Figma designs into clean, functional HTML/CSS/JS components</li>
+          <li>Improved navigation flow and accessibility for all users</li>
+          <li>Integrated frontend with legal database and authentication system via backend APIs</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ei"><div class="edot"></div>
+      <div class="ec">
+        <div class="eh"><span class="er">DevOps — Self-Directed Learning</span><span class="ep"> 3 Months (6sem)</span></div>
+        <div class="eco">Personal Projects</div>
+        <ul class="epoints">
+          <li>Containerization using Docker and Docker Compose for production deployments</li>
+          <li>CI/CD pipelines with GitHub Actions for automated testing and deployments</li>
+          <li>Deployed and managed applications on AWS EC2 with cloud infrastructure basics</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec" id="ed">
+  <div><p class="sec-ey">// education</p><h2 class="sec-t">Academic <span>Background</span></h2></div>
+  <div class="educ">
+    <div class="eicon">🎓</div>
+    <div>
+      <div class="edeg">BSc. CSIT — Computer Science &amp; Information Technology</div>
+      <div class="esch">Tribhuvan University · Kathmandu, Nepal</div>
+      <div class="eper">2022 – Present</div>
+    </div>
+  </div>
+  <div class="educ">
+    <div class="eicon">🎓</div>
+    <div>
+      <div class="edeg">Higher Secondary Education  &amp; Computer Science</div>
+      <div class="esch">Nilkantha Higher Secondary School · Dhading, Nepal</div>
+      <div class="eper">2019 – 2021</div>
+    </div>
+  </div>
+  
+
+  
+  <div class="certs">
+   
+  </div>
+</div>
+
+<div class="sec sec-alt" id="ab">
+  <div><p class="sec-ey">// about me</p><h2 class="sec-t">The Person <span>Behind the Code</span></h2></div>
+  <div class="ag">
+    <div class="at">
+      <p>I'm Uttam — a full-stack web developer based in Kathmandu, Nepal. I bridge the gap between beautiful frontends and robust backends, building applications that are both fast and a joy to use.</p>
+      <p>My journey started with HTML &amp; CSS, quickly expanding to Vue.js and React on the frontend, and Django + Python on the backend. I'm passionate about real-world problems — tools that help Nepali farmers access AI, or platforms that connect people globally in real time.</p>
+      <p>Beyond coding, I enjoy DevOps — containerizing with Docker, setting up CI/CD, and shipping production-ready code from day one.</p>
+      <div class="ainfo">
+        <div class="air"><span class="al">location</span><span class="av">Kalanki, Kathmandu, Nepal 🇳🇵</span></div>
+        <div class="air"><span class="al">email</span><span class="av">uttamkoirala2060@gmail.com</span></div>
+        <div class="air"><span class="al">phone</span><span class="av">+977-9861777654</span></div>
+        <div class="air"><span class="al">linkedin</span><span class="av">linkedin.com/in/uttam-koirala</span></div>
+        <div class="air"><span class="al">github</span><span class="av">github.com/uttamKo</span></div>
+      </div>
+    </div>
+    <div class="term">
+      <div class="tbar"><div class="tdot" style="background:#ff5f57"></div><div class="tdot" style="background:#febc2e"></div><div class="tdot" style="background:#28c840"></div><span class="ttitle">uttam@portfolio ~ zsh</span></div>
+      <div class="tl"><span class="tp2">$ </span><span class="tcmd">cat developer.json</span></div>
+      <div class="tl tout">{</div>
+      <div class="tl tout">&nbsp;&nbsp;<span class="tblue">"name"</span>: <span class="tgrn">"Uttam Koirala"</span>,</div>
+      <div class="tl tout">&nbsp;&nbsp;<span class="tblue">"role"</span>: <span class="tgrn">"Full Stack Developer"</span>,</div>
+      <div class="tl tout">&nbsp;&nbsp;<span class="tblue">"frontend"</span>: [<span class="tpur">"Vue"</span>, <span class="tpur">"React"</span>, <span class="tpur">"JS"</span>],</div>
+      <div class="tl tout">&nbsp;&nbsp;<span class="tblue">"backend"</span>: [<span class="tpur">"Django"</span>, <span class="tpur">"Python"</span>, <span class="tpur">"DRF"</span>],</div>
+      <div class="tl tout">&nbsp;&nbsp;<span class="tblue">"realtime"</span>: [<span class="tpur">"WebSockets"</span>, <span class="tpur">"WebRTC"</span>],</div>
+      <div class="tl tout">&nbsp;&nbsp;<span class="tblue">"devops"</span>: [<span class="tpur">"Docker"</span>, <span class="tpur">"AWS"</span>, <span class="tpur">"CI/CD"</span>],</div>
+      <div class="tl tout">&nbsp;&nbsp;<span class="tblue">"open_to_work"</span>: <span class="tpnk">true</span></div>
+      <div class="tl tout">}</div>
+      <div class="tl" style="margin-top:.6rem"><span class="tp2">$ </span><span class="tcmd">_</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="contact" id="ct">
+  <div class="ctag"><span class="hdot"></span> Available for freelance &amp; full-time roles</div>
+  <h2 class="ctitle">Let's Build Something <span>Great Together</span></h2>
+  <p class="csub">Whether you need a full-stack application, a responsive UI, or a scalable Django backend — I'm ready to collaborate.</p>
+  <div class="clinks">
+    <a href="mailto:uttamkoirala2060@gmail.com" class="cl">✉️ uttamkoirala2060@gmail.com</a>
+    <a href="https://www.linkedin.com/in/uttam-koirala" target="_blank" class="cl">💼 LinkedIn</a>
+    <a href="https://github.com/uttamKo" target="_blank" class="cl">🐙 GitHub</a>
+    <a href="tel:+9779861777654" class="cl">📞 +977-9861777654</a>
+  </div>
+</div>
+
+<footer><span>Uttam Koirala</span> · Full Stack Developer · Kathmandu, Nepal · 2025</footer>
+</div>
